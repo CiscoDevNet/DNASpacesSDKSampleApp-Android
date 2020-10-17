@@ -24,7 +24,7 @@ This sample App implements the main methods of the Cisco DNA Spaces SDK. Feel fr
 
 ## Cisco DNA Spaces SDK
 
-The sample App is already prepared to download Cisco DNA Spaces SDK library from Maven Central via the following dependency configuration in app gradle property:
+The sample App is already prepared to download Cisco DNA Spaces SDK library from Maven Central via the following dependency configuration in app `build.gradle` file:
 
 ```
 dependencies {
