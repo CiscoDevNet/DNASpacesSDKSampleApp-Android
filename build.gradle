@@ -20,15 +20,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url = uri("http://devhub.cisco.com/artifactory/Cisco-DNA-Spaces-SDK-release/")
-            credentials {
-                password = "REDACTED"
-            }
-            metadataSources {
-                artifact()
-            }
-        }
     }
 }
 
