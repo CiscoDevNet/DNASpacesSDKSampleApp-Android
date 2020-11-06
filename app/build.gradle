@@ -43,7 +43,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:20.2.0'
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
 
-    //implementation files("libs\\sdk-release.aar")
-    //implementation(group: 'org', name: 'sdk-test', version: '1.0.0', ext: 'aar')
-    implementation 'com.github.ciscodevnet:dna-spaces-sdk:1.0.0@aar'
+    implementation 'com.github.ciscodevnet:dna-spaces-sdk:latest.release'
 }
