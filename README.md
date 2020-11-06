@@ -28,7 +28,7 @@ The sample App is already prepared to download Cisco DNA Spaces SDK library from
 
 ```
 dependencies {
-   implementation ‘com.github.ciscodevnet:dna-spaces-sdk:1.0.0@aar’
+   implementation ‘com.github.ciscodevnet:dna-spaces-sdk:latest.release’
 }
 ```
 
