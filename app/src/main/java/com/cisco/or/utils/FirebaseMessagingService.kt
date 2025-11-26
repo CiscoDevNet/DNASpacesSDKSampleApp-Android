@@ -5,7 +5,7 @@ import android.preference.PreferenceManager.getDefaultSharedPreferencesName
 import android.util.Log
 import com.cisco.or.sdk.OpenRoaming
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -48,13 +48,14 @@ class FirebaseMessagingService : FirebaseMessagingService() {
 
         if (pushToken == null) {
 
-            FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener(
+            FirebaseMessaging.getInstance().token.addOnCompleteListener(
                 OnCompleteListener { task ->
                     if (!task.isSuccessful) {
-                        Log.d(TAG, "Firebase instance failed: ", task.exception)
+                        Log.d(TAG, "Firebase token retrieval failed: ", task.exception)
+                        return@OnCompleteListener
                     }
 
-                    val appToken = task.result?.token
+                    val appToken = task.result
 
                     Log.d(TAG, "Token received: $appToken")
                     context.getSharedPreferences(sharedPrefs, Context.MODE_PRIVATE).edit().putString(Constant.PUSH_TOKEN, appToken).apply()

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.cisco.or">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <uses-permission android:name="android.permission.NETWORK_SETUP_WIZARD" />
     <uses-permission android:name="android.permission.NETWORK_SETTINGS"
             tools:ignore="ProtectedPermissions" />
@@ -28,20 +30,34 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.SplashPageActivity">
+        <activity
+            android:name=".activity.SplashPageActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.login.WebViewAuthenticationActivity"/>
-        <activity android:name=".activity.HomeActivity"/>
+
+        <activity
+            android:name=".activity.login.WebViewAuthenticationActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.HomeActivity"
+            android:exported="false"/>
 
         <!-- LOGIN -->
-        <activity android:name=".activity.login.SelectSigningServiceActivity"/>
-        <activity android:name=".activity.login.SigningActivity"/>
-        <activity android:name=".activity.login.ServerAuthCodeAuthenticationActivity"/>
-        <activity android:name=".activity.login.UserIdAuthenticationActivity"/>
+        <activity
+            android:name=".activity.login.SelectSigningServiceActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.login.SigningActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.login.ServerAuthCodeAuthenticationActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.login.UserIdAuthenticationActivity"
+            android:exported="false"/>
     </application>
 </manifest>

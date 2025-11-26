@@ -8,10 +8,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cisco.or.R
 import com.cisco.or.activity.HomeActivity
+import com.cisco.or.databinding.UserIdBasedBinding
 import com.cisco.or.sdk.OpenRoaming
 import com.cisco.or.sdk.enums.IdType
 import com.cisco.or.sdk.exceptions.EmailException
-import kotlinx.android.synthetic.main.user_id_based.*
 
 class UserIdAuthenticationActivity : AppCompatActivity() {
 
@@ -19,13 +19,16 @@ class UserIdAuthenticationActivity : AppCompatActivity() {
         private val TAG = UserIdAuthenticationActivity::class.java.name
     }
 
+    private lateinit var binding: UserIdBasedBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.user_id_based)
+        binding = UserIdBasedBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         this.supportActionBar?.hide()
 
-        buttonContinue.setOnClickListener {
-            val value = findViewById<EditText>(R.id.editTextValue).text.toString()
+        binding.buttonContinue.setOnClickListener {
+            val value = binding.editTextValue.text.toString()
             if(value.isNullOrBlank() || value.isNullOrEmpty()) {
                 Toast.makeText(this, R.string.email_required, Toast.LENGTH_SHORT).show()
             } else {

@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cisco.or.R
 import com.cisco.or.activity.HomeActivity
 import com.cisco.or.sdk.OpenRoaming
-import kotlinx.android.synthetic.main.activity_signing.*
+import com.cisco.or.databinding.ActivitySigningBinding
 
 class SigningActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySigningBinding
 
     companion object {
         private val TAG = SigningActivity::class.java.name
@@ -18,13 +20,14 @@ class SigningActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signing)
+        binding = ActivitySigningBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val service = intent.getSerializableExtra("service").toString()
 
         try {
             OpenRoaming.associateUser(
-                signingView,
+                binding.signingView,
                 service,
                 signingHandler = {
                     val intent = Intent(this, HomeActivity::class.java)
@@ -38,7 +41,7 @@ class SigningActivity : AppCompatActivity() {
         catch (e: Exception){
             val toast = Toast.makeText(this, e.message, Toast.LENGTH_LONG)
             toast.show()
-            Log.e(TAG, e.message)
+            Log.e(TAG, e.message.toString())
         }
     }
 }

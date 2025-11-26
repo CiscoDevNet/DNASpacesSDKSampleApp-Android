@@ -21,7 +21,6 @@ import com.cisco.or.sdk.models.User
 import com.cisco.or.sdk.models.UserDetail
 import com.cisco.or.utils.Constant
 import com.cisco.or.utils.PushNotification
-import kotlinx.android.synthetic.main.identity.view.*
 import java.util.*
 
 class IdentitiesFragment : Fragment() {
@@ -82,7 +81,7 @@ class IdentitiesFragment : Fragment() {
                 switchPush.setOnCheckedChangeListener { _, isChecked ->
                     setPushNotificationAssociate(isChecked)
                 }
-            viewMain.identityLayout.addView(identityDataView)
+            viewMain.findViewById<ViewGroup>(R.id.identityLayout).addView(identityDataView)
         }
     }
 

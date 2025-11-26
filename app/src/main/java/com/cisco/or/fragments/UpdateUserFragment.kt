@@ -42,7 +42,7 @@ class UpdateUserFragment(val userDetail: UserDetail) : Fragment() {
             val age = updateUserView.findViewById<EditText>(R.id.editTextAge).text
             val zipCode = updateUserView.findViewById<EditText>(R.id.editTextZipCode).text
 
-            val userDetailEdited = UserDetail(userDetail.name, phone.toString(), email.toString() , age.toString().toInt(), zipCode.toString())
+            val userDetailEdited = UserDetail(userDetail.name, phone.toString(), email.toString() , age.toString(), zipCode.toString())
 
             updateUser(userDetailEdited)
         }
