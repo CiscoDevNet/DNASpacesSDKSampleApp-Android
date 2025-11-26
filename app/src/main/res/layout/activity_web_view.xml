@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <include layout="@layout/fragment_webview"/>
+    <include
+        android:id="@+id/webviewLayout"
+        layout="@layout/fragment_webview"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

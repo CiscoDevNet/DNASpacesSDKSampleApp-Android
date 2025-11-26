@@ -11,9 +11,9 @@ import com.cisco.or.sdk.OpenRoaming
 import com.cisco.or.sdk.enums.SigningServiceName
 import com.cisco.or.sdk.enums.SigningState
 import com.cisco.or.sdk.exceptions.Hotspot2NotSupportedException
+import com.cisco.or.databinding.ActivitySelectSigningServiceBinding
 import com.cisco.or.utils.Constant
 import com.cisco.or.utils.FirebaseMessagingService
-import kotlinx.android.synthetic.main.activity_select_signing_service.*
 
 class SelectSigningServiceActivity : AppCompatActivity() {
 
@@ -21,18 +21,20 @@ class SelectSigningServiceActivity : AppCompatActivity() {
         private val TAG = SelectSigningServiceActivity::class.java.name
     }
 
+    private lateinit var binding: ActivitySelectSigningServiceBinding
     private lateinit var serviceName:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_select_signing_service)
+        binding = ActivitySelectSigningServiceBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         this.supportActionBar?.hide()
 
         val firebaseMessagingService = FirebaseMessagingService()
         firebaseMessagingService.registerPush(this)
 
         try {
-            OpenRoaming.registerSdk(this, Constant.ApplicationId, Constant.dnaSpacesKey) { signingState ->
+            OpenRoaming.registerSdk(this, Constant.ApplicationId, Constant.dnaSpacesKey, OpenRoaming.REGION.US) { signingState ->
                 if (signingState == SigningState.SIGNED) {
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
@@ -52,20 +54,20 @@ class SelectSigningServiceActivity : AppCompatActivity() {
                 }
                 .setCancelable(false)
                 .show()
-            Log.e(TAG, e.message)
+            Log.e(TAG, e.message.toString())
         }
 
-        buttonGoogleSignIn.setOnClickListener {
+        binding.buttonGoogleSignIn.setOnClickListener {
             login(SigningServiceName.GOOGLE.value)
         }
-        buttonAppleSignIn.setOnClickListener {
+        binding.buttonAppleSignIn.setOnClickListener {
             login(SigningServiceName.APPLE.value)
         }
-        buttonOAuthAuthentication.setOnClickListener {
+        binding.buttonOAuthAuthentication.setOnClickListener {
             val intent = Intent(this, ServerAuthCodeAuthenticationActivity::class.java)
             startActivity(intent)
         }
-        buttonLoyaltyProgram.setOnClickListener {
+        binding.buttonLoyaltyProgram.setOnClickListener {
             val intent = Intent(this, UserIdAuthenticationActivity::class.java)
             startActivity(intent)
         }
