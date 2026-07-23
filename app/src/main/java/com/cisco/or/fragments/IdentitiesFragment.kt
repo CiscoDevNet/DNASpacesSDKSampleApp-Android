@@ -34,16 +34,16 @@ class IdentitiesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val identityView = inflater.inflate(R.layout.identity, container, false)
 
-            try{
-                OpenRoaming.getUserDetails { user ->
-                    OpenRoaming.getPrivacySettings { privacySettings ->
-                        this.privacySettings = privacySettings
-                        loadFragment(user, inflater, container, identityView, privacySettings)
-                    }
+        try{
+            OpenRoaming.getUserDetails { user ->
+                OpenRoaming.getPrivacySettings { privacySettings ->
+                    this.privacySettings = privacySettings
+                    loadFragment(user, inflater, container, identityView, privacySettings)
                 }
-            } catch (e: Exception) {
-                Log.e(TAG, Log.getStackTraceString(e))
             }
+        } catch (e: Exception) {
+            Log.e(TAG, Log.getStackTraceString(e))
+        }
         return identityView
     }
 
@@ -100,8 +100,9 @@ class IdentitiesFragment : Fragment() {
 
     private fun setPushNotificationAssociate(checked: Boolean) {
 
-        val sharedPrefs = PreferenceManager.getDefaultSharedPreferencesName(this.context)
-        pushToken = this.context!!.getSharedPreferences(sharedPrefs, Context.MODE_PRIVATE).getString(
+        val context = requireContext()
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferencesName(context)
+        pushToken = context.getSharedPreferences(sharedPrefs, Context.MODE_PRIVATE).getString(
             Constant.PUSH_TOKEN, null)
             .toString()
 
