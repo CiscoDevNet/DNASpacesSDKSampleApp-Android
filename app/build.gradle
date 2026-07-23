@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
     id 'com.google.gms.google-services'
 }
 
@@ -29,10 +28,6 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
     
-    kotlinOptions {
-        jvmTarget = '17'
-    }
-    
     buildFeatures {
         viewBinding true
     }
@@ -40,8 +35,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    
     // AndroidX Libraries
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
