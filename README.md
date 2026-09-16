@@ -24,13 +24,13 @@ This sample App implements the main methods of the Cisco DNA Spaces SDK. Feel fr
 
 ## Cisco DNA Spaces SDK
 
-This checkout uses the locally generated Cisco DNA Spaces SDK `1.1` AAR,
-which supports Android 11 (API 30) through Android 16 (API 36).
-The AAR is stored at `app/libs/sdk-release.aar` and is declared in
-`app/build.gradle` as follows:
+This checkout uses Cisco DNA Spaces SDK `1.1` from Maven Central. It supports
+Android 11 (API 30) through Android 16 (API 36).
+
+The SDK is declared in `app/build.gradle` as follows:
 
 ```
 dependencies {
-   implementation files('libs/sdk-release.aar')
+   implementation 'com.github.ciscodevnet:dna-spaces-sdk:1.1'
 }
 ```

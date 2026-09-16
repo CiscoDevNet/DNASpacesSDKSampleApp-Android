@@ -57,13 +57,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.7.0'
     
     // DNA Spaces SDK
-    implementation files('libs/sdk-release.aar')
-    implementation 'com.auth0:java-jwt:4.4.0'
-    implementation 'com.auth0.android:jwtdecode:2.0.1'
-    implementation 'com.google.guava:guava:32.0.1-android'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.8.0'
-    implementation 'org.bouncycastle:bcprov-jdk18on:1.78.1'
+    implementation 'com.github.ciscodevnet:dna-spaces-sdk:1.1'
     
     // Testing
     testImplementation 'junit:junit:4.13.2'
